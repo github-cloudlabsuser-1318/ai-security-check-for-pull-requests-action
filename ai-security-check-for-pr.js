@@ -3,7 +3,7 @@ const path = require("path")
 const core = require("@actions/core")
 const axios = require("axios")
 
-const OPEN_AI_MODEL = "gpt-3.5-turbo"
+const OPEN_AI_MODEL = "gpt-4"
 const OPENAI_API = axios.create({
   baseURL: "https://api.openai.com/v1/",
   headers: {
@@ -21,7 +21,7 @@ const GH_API = axios.create({
 
 async function analyzeCode(code) {
   try {
-    const prompt = `Analyze the following code snippet for security and privacy issues using GPT-3.5-turbo:\n\nCode:\n${code}\n\nIssues:\n`
+    const prompt = `Analyze the following code snippet for security and privacy issues using GPT-4:\n\nCode:\n${code}\n\nIssues:\n`
     const response = await OPENAI_API.post("chat/completions", {
       model: OPEN_AI_MODEL,
       messages: [
